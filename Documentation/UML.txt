@@ -1,0 +1,58 @@
+//From https://dbdiagram.io/d/649ef66502bd1c4a5e50c13e
+
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+TABLE Warehouses
+{
+    WhsId SERIAL [PRIMARY KEY]
+    Name VARCHAR(120)
+    Capacity NUMERIC(120)
+    ClimateControlled BOOLEAN
+    Manager VARCHAR(64)
+    Street1 VARCHAR(40)
+    Street2 VARCHAR(40)
+    City VARCHAR(20)
+    State CHAR(2)
+    Zip CHAR(5)
+    Country CHAR(3)
+    UserLogged VARCHAR(64)
+    CallTime TIMESTAMP
+}
+
+TABLE WhsObjects
+{
+    WhsId INT [PRIMARY KEY]
+    TypId INT [PRIMARY KEY]
+    Quantity INT
+    Note VARCHAR(1200)
+    UserLogged VARCHAR(64)
+    CallTime TIMESTAMP
+}
+
+TABLE ObjTypes
+{
+    TypId SERIAL [PRIMARY KEY]
+    Name VARCHAR(120)
+    Description VARCHAR(1200)
+    Size NUMERIC(120)
+    UserLogged VARCHAR(64)
+    CallTime TIMESTAMP
+}
+
+Ref: Warehouses.WhsId < WhsObjects.WhsId
+REF: ObjTypes.TypId < WhsObjects.TypId
+/*
+Ref: posts.user_id > users.id // many-to-one
+
+Ref: users.id < follows.following_user_id
+
+Ref: users.id < follows.followed_user_id
+
+ALTER TABLE WhsObjects ADD CONSTRAINT FK_WhsId
+    FOREIGN KEY (WhsId) REFERENCES Warehouses (WhsId) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE WhsObjects ADD CONSTRAINT FK_TypId
+    FOREIGN KEY (TypId) REFERENCES ObjTypes (TypId) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+*/
