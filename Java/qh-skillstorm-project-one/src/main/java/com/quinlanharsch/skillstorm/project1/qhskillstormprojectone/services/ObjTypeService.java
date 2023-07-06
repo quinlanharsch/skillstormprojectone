@@ -17,9 +17,18 @@ public class ObjTypeService {
         return objTypeRepository.save(objtype);
     }
 
-    public ObjType findById(int id) {
-        Optional<ObjType> objtype = objTypeRepository.findById(id);
+    public ObjType findById(int typid) {
+        Optional<ObjType> objtype = objTypeRepository.findById(typid);
         if(objtype.isPresent()) {
+            return objtype.get();
+        }
+        return null;
+    }
+
+    public ObjType deleteById(int typid) {
+        Optional<ObjType> objtype = objTypeRepository.findById(typid);
+        if(objtype.isPresent()) {
+            objTypeRepository.deleteById(typid);
             return objtype.get();
         }
         return null;
