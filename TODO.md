@@ -1,4 +1,11 @@
-1. Post to GH
-3. Keep building out CSMR in java
-4. Create-Read-Upadate-Delete
-5. Model-Repo-Service-Controller-View
+TODO
+- Post to GH
+- Keep building out CSMR in java
+- Front end
+
+DONE
+- Init commit
+
+NOTE
+- Create-Read-Upadate-Delete
+- Model-Repo-Service-Controller-View

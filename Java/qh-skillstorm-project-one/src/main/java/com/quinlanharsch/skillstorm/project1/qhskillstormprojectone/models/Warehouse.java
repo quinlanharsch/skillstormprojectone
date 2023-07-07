@@ -50,7 +50,7 @@ public class Warehouse {
     
     // REFS
     @JsonBackReference
-    @OneToMany(targetEntity = WhsObject.class, mappedBy = "warehouse")   // mappedBy is the name of thhe JAVA VARIABLE in the other object
+    @OneToMany(targetEntity = WhsObject.class, mappedBy = "warehouse")
     private Set<WhsObject> whsobjects;
 
     // CONSTRUCTORS
