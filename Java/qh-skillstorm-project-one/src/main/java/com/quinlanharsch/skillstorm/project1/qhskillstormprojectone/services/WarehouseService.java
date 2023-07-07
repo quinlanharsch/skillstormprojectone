@@ -11,14 +11,14 @@ import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.repositories
 @Service
 public class WarehouseService {
     @Autowired
-    WarehouseRepository repository;
+    WarehouseRepository warehouseRepository;
 
     public Warehouse saveWarehouse(Warehouse warehouse) {
-        return repository.save(warehouse);
+        return warehouseRepository.save(warehouse);
     }
 
     public Warehouse findById(int id) {
-        Optional<Warehouse> warehouse = repository.findById(id);
+        Optional<Warehouse> warehouse = warehouseRepository.findById(id);
         if(warehouse.isPresent()) {
             return warehouse.get();
         }
@@ -26,9 +26,9 @@ public class WarehouseService {
     }
 
     public Warehouse deleteById(int id) {
-        Optional<Warehouse> warehouse = repository.findById(id);
+        Optional<Warehouse> warehouse = warehouseRepository.findById(id);
         if(warehouse.isPresent()) {
-            repository.deleteById(id);
+            warehouseRepository.deleteById(id);
             return warehouse.get();
         }
         return null;

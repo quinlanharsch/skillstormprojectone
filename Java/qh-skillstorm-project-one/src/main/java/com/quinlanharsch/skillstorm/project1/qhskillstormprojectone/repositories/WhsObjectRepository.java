@@ -12,4 +12,9 @@ public interface WhsObjectRepository extends JpaRepository<WhsObject, Integer> {
     // save, findAll, findById, delete, deleteByID, deleteAll, etc.
     // https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-keywords 
     
+    Optional<WhsObject> findById(int whsid, int typid);
+
+    void deleteById(int whsid, int typid);
+
+    // if this doesn't work use https://stackoverflow.com/questions/60622940/how-to-make-findby-with-composite-key-in-spring-data-jpa-hibernate-embedde
 }

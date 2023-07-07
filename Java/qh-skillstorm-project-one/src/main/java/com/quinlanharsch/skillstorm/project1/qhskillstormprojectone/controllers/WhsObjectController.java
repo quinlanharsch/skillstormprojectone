@@ -34,7 +34,7 @@ public class WhsObjectController {
     //Read
     @GetMapping("/object/{whsid}/{typid}")
     public ResponseEntity<WhsObject> findWhsObjectById(int whsid, int typid) {
-        WhsObject whsObject = whsObjectService.findById(new WhsObjectKey(whsid, typid));
+        WhsObject whsObject = whsObjectService.findById(whsid, typid);
         return new ResponseEntity<WhsObject>(whsObject, HttpStatus.OK);
     }
 
@@ -45,10 +45,10 @@ public class WhsObjectController {
         return new ResponseEntity<WhsObject>(newWhsObject, HttpStatus.OK);
     }
 
-    //Delete
+    //Delete 
     @DeleteMapping("/object/{whsid}/{typid}")
     public ResponseEntity<WhsObject> deleteWhsObject(int whsid, int typid) {
-        WhsObject delWhsObject = whsObjectService.deleteById(new WhsObjectKey(whsid, typid));
+        WhsObject delWhsObject = whsObjectService.deleteById(whsid, typid);
         return new ResponseEntity<WhsObject>(delWhsObject, HttpStatus.NO_CONTENT);
     }
 }
