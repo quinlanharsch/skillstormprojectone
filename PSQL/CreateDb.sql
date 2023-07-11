@@ -260,16 +260,16 @@ VALUES (5, 5, 10, 'system', NOW());
 --     INSERT INTO ObjTypes (TypName, TypDesc, TypSize, UserLogged, CallTime) VALUES (TypeName, TypeDescription, TypeSize, User, NOW());    
 -- END;
 
-CREATE PROCEDURE WhsCapacityLeft(WarehouseId INT)
-LANGUAGE SQL
-BEGIN ATOMIC
-    SELECT MAX(w.capacity) - SUM(t.size * o.quantity) CapSum
-    -- TODO * QUANTITY
-    FROM public.Warehouses w
-    JOIN public.WhsObjects o ON w.WhsId = o.WhsId
-    JOIN public.ObjTypes t on t.TypId = o.TypId
-    WHERE w.WhsId = 1 --WarehouseId
-    ;
-END;
+-- CREATE PROCEDURE WhsCapacityLeft(WarehouseId INT)
+-- LANGUAGE SQL
+-- BEGIN ATOMIC
+--     SELECT MAX(w.capacity) - SUM(t.size * o.quantity) CapSum
+--     -- TODO * QUANTITY
+--     FROM public.Warehouses w
+--     JOIN public.WhsObjects o ON w.WhsId = o.WhsId
+--     JOIN public.ObjTypes t on t.TypId = o.TypId
+--     WHERE w.WhsId = 1 --WarehouseId
+--     ;
+-- END;
 
 -- TODO ADD/DEL Type

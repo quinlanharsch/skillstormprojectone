@@ -1,10 +1,13 @@
 TODO
-- Post to GH
 - Keep building out CSMR in java
 - Front end
 
+UPKP
+- Post to GH
+
 DONE
 - Init commit
+- Model
 
 NOTE
 - Create-Read-Upadate-Delete

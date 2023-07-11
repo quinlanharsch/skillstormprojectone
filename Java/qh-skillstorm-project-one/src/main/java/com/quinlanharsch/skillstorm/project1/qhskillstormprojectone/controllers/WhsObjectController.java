@@ -10,12 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.models.WhsObject;
-import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.models.WhsObjectKey;
 import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.services.WhsObjectService;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
-
 
 @RestController
 @RequestMapping("/objects")

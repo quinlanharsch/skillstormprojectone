@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-QhSkillstormProjectOneApplication<qh-skillstorm-project-one>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.QhSkillstormProjectOneApplication",
+            "projectName": "qh-skillstorm-project-one",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

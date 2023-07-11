@@ -7,6 +7,7 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,12 +16,18 @@ public class WhsObject {
     
     @EmbeddedId
     WhsObjectKey id;
+
     @ManyToOne
-    @JoinColumn(name = "whsid")
-    private int warehouse;
+    @MapsId("warehouseId")
+    @JoinColumn(name = "whsid", insertable = false, updatable = false)
+    private Warehouse warehouse;
+    // referencedColumnName = "whsid"
+
     @ManyToOne
-    @JoinColumn(name = "typid")
-    private int type;
+    @MapsId("typeId")
+    @JoinColumn(name = "typid", insertable = false, updatable = false)
+    private ObjType objtype;
+    
     @Column
     private int quantity;
     @Column
@@ -33,34 +40,34 @@ public class WhsObject {
     public WhsObject() {
     }
 
-    public WhsObject(int warehouse, int type, int quantity, String note) {
+    public WhsObject(Warehouse warehouse, ObjType type, int quantity, String note) {
         this.warehouse = warehouse;
-        this.type = type;
+        this.objtype = type;
         this.quantity = quantity;
         this.note = note;
         //this.calltime = now;
     }
 
-    public WhsObject(int warehouse, int type, int quantity, String note, String userlogged, Timestamp calltime) {
+    public WhsObject(Warehouse warehouse, ObjType type, int quantity, String note, String userlogged, Timestamp calltime) {
         this.warehouse = warehouse;
-        this.type = type;
+        this.objtype = type;
         this.quantity = quantity;
         this.note = note;
         this.userlogged = userlogged;
         this.calltime = calltime;
     }
 
-    public int getWarehouse() {
+    public Warehouse getWarehouse() {
         return warehouse;
     }
-    public void setWarehouse(int warehouse) {
+    public void setWarehouse(Warehouse warehouse) {
         this.warehouse = warehouse;
     }
-    public int getType() {
-        return type;
+    public ObjType getObjtype() {
+        return objtype;
     }
-    public void setType(int type) {
-        this.type = type;
+    public void setObjtype(ObjType type) {
+        this.objtype = type;
     }
     public int getQuantity() {
         return quantity;
@@ -91,8 +98,9 @@ public class WhsObject {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + warehouse;
-        result = prime * result + type;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((warehouse == null) ? 0 : warehouse.hashCode());
+        result = prime * result + ((objtype == null) ? 0 : objtype.hashCode());
         result = prime * result + quantity;
         result = prime * result + ((note == null) ? 0 : note.hashCode());
         result = prime * result + ((userlogged == null) ? 0 : userlogged.hashCode());
@@ -109,9 +117,20 @@ public class WhsObject {
         if (getClass() != obj.getClass())
             return false;
         WhsObject other = (WhsObject) obj;
-        if (warehouse != other.warehouse)
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
             return false;
-        if (type != other.type)
+        if (warehouse == null) {
+            if (other.warehouse != null)
+                return false;
+        } else if (!warehouse.equals(other.warehouse))
+            return false;
+        if (objtype == null) {
+            if (other.objtype != null)
+                return false;
+        } else if (!objtype.equals(other.objtype))
             return false;
         if (quantity != other.quantity)
             return false;
@@ -135,7 +154,7 @@ public class WhsObject {
 
     @Override
     public String toString() {
-        return "WhsObject [warehouse=" + warehouse + ", type=" + type + ", quantity=" + quantity + ", note=" + note
-                + ", userlogged=" + userlogged + ", calltime=" + calltime + "]";
+        return "WhsObject [id=" + id + ", whsid=" + warehouse + ", typid=" + objtype + ", quantity=" + quantity + ", note="
+                + note + ", userlogged=" + userlogged + ", calltime=" + calltime + "]";
     }   
 }

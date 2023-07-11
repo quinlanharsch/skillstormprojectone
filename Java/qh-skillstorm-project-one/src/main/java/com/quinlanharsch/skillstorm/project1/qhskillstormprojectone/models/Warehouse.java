@@ -20,9 +20,9 @@ public class Warehouse {
     
     // COLUMN DEFFINITION
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int whsid;
+    
     @Column
     private String name;
     @Column
@@ -30,7 +30,7 @@ public class Warehouse {
     @Column
     private boolean climatecontrolled;
     @Column
-    private boolean manager;
+    private String manager;
     @Column
     private String street1;
     @Column
@@ -57,7 +57,7 @@ public class Warehouse {
     public Warehouse() {
     }
 
-    public Warehouse(int whsid, String name, BigDecimal capacity, boolean climatecontrolled, boolean manager,
+    public Warehouse(int whsid, String name, BigDecimal capacity, boolean climatecontrolled, String manager,
             String street1, String street2, String city, String state, String zip, String country, String userlogged,
             Timestamp calltime, Set<WhsObject> whsobjects) {
         this.whsid = whsid;
@@ -76,7 +76,7 @@ public class Warehouse {
         this.whsobjects = whsobjects;
     }
 
-    public Warehouse(String name, BigDecimal capacity, boolean climatecontrolled, boolean manager, String street1,
+    public Warehouse(String name, BigDecimal capacity, boolean climatecontrolled, String manager, String street1,
             String street2, String city, String state, String zip, String country) {
         this.name = name;
         this.capacity = capacity;
@@ -117,10 +117,10 @@ public class Warehouse {
     public void setClimatecontrolled(boolean climatecontrolled) {
         this.climatecontrolled = climatecontrolled;
     }
-    public boolean isManager() {
+    public String isManager() {
         return manager;
     }
-    public void setManager(boolean manager) {
+    public void setManager(String manager) {
         this.manager = manager;
     }
     public String getStreet1() {
@@ -172,7 +172,6 @@ public class Warehouse {
         this.calltime = calltime;
     }
 
-    // HASH AND EQ
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -181,7 +180,7 @@ public class Warehouse {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((capacity == null) ? 0 : capacity.hashCode());
         result = prime * result + (climatecontrolled ? 1231 : 1237);
-        result = prime * result + (manager ? 1231 : 1237);
+        result = prime * result + ((manager == null) ? 0 : manager.hashCode());
         result = prime * result + ((street1 == null) ? 0 : street1.hashCode());
         result = prime * result + ((street2 == null) ? 0 : street2.hashCode());
         result = prime * result + ((city == null) ? 0 : city.hashCode());
@@ -190,6 +189,7 @@ public class Warehouse {
         result = prime * result + ((country == null) ? 0 : country.hashCode());
         result = prime * result + ((userlogged == null) ? 0 : userlogged.hashCode());
         result = prime * result + ((calltime == null) ? 0 : calltime.hashCode());
+        result = prime * result + ((whsobjects == null) ? 0 : whsobjects.hashCode());
         return result;
     }
 
@@ -216,7 +216,10 @@ public class Warehouse {
             return false;
         if (climatecontrolled != other.climatecontrolled)
             return false;
-        if (manager != other.manager)
+        if (manager == null) {
+            if (other.manager != null)
+                return false;
+        } else if (!manager.equals(other.manager))
             return false;
         if (street1 == null) {
             if (other.street1 != null)
@@ -258,14 +261,19 @@ public class Warehouse {
                 return false;
         } else if (!calltime.equals(other.calltime))
             return false;
+        if (whsobjects == null) {
+            if (other.whsobjects != null)
+                return false;
+        } else if (!whsobjects.equals(other.whsobjects))
+            return false;
         return true;
     }
 
-    // TOSTRING
     @Override
     public String toString() {
         return "Warehouse [whsid=" + whsid + ", name=" + name + ", capacity=" + capacity + ", climatecontrolled="
                 + climatecontrolled + ", manager=" + manager + ", street1=" + street1 + ", street2=" + street2
-                + ", city=" + city + ", state=" + state + ", zip=" + zip + ", country=" + country + "]";
+                + ", city=" + city + ", state=" + state + ", zip=" + zip + ", country=" + country + ", userlogged="
+                + userlogged + ", calltime=" + calltime + "]";
     }
 }

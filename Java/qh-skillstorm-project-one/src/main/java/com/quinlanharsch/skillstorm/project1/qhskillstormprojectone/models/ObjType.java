@@ -19,9 +19,9 @@ import jakarta.persistence.Table;
 public class ObjType {
 
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int typid;
+    
     @Column
     private String name;
     @Column
@@ -34,7 +34,7 @@ public class ObjType {
     private Timestamp calltime;
     
     @JsonBackReference
-    @OneToMany(targetEntity = WhsObject.class, mappedBy = "type")
+    @OneToMany(targetEntity = WhsObject.class, mappedBy = "objtype")
     private Set<WhsObject> whsobjects;
 
     public ObjType() {

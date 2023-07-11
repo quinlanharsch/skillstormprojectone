@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -35,8 +36,8 @@ public class WarehouseController {
 
     //Read
     @GetMapping("/warehouse/{whsid}")
-    public ResponseEntity<Warehouse> findWarehouseById(@RequestParam int whid) {
-        Warehouse warehouse = warehouseService.findById(whid);
+    public ResponseEntity<Warehouse> findWarehouseById(@PathVariable int whsid) {
+        Warehouse warehouse = warehouseService.findById(whsid);
         return new ResponseEntity<Warehouse>(warehouse, HttpStatus.OK);
     }
 

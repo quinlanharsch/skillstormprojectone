@@ -1,5 +1,7 @@
 package com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.repositories;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -21,5 +23,5 @@ public interface WarehouseRepository extends JpaRepository<Warehouse, Integer>{
             "JOIN public.WhsObjects o ON w.WhsId = o.WhsId\r\n" + //
             "JOIN public.ObjTypes t on t.TypId = o.TypId\r\n" + //
             "WHERE w.WhsId = 1 --WarehouseId;", nativeQuery = true)
-    long remainingCapacityByWhsId(int whsid);
+    BigDecimal remainingCapacityByWhsId(int whsid);
 }

@@ -4,45 +4,45 @@ import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.validation.constraints.NotNull;
 
 @Embeddable
 public class WhsObjectKey implements Serializable {
-    @NotNull
-    @Column(name = "whsid")
-    private int warehouse;
+    
+    //NOTE Composite keys in the model require a seperate Serializable object to be used as the id in WhsObject 
 
-    @NotNull
+    @Column(name = "whsid")
+    private int warehouseId;
+
     @Column(name = "typid")
-    private int type;
+    private int typeId;
 
     public WhsObjectKey() {
     }
 
     public WhsObjectKey(int warehouse, int type) {
-        this.warehouse = warehouse;
-        this.type = type;
+        this.warehouseId = warehouse;
+        this.typeId = type;
     }
 
-    public int getWarehouse() {
-        return warehouse;
+    public int getWarehouseId() {
+        return warehouseId;
     }
-    public void setWarehouse(int warehouse) {
-        this.warehouse = warehouse;
+    public void setWarehouseId(int warehouse) {
+        this.warehouseId = warehouse;
     }
-    public int getType() {
-        return type;
+    public int getTypeId() {
+        return typeId;
     }
-    public void setType(int type) {
-        this.type = type;
+    public void setTypeId(int type) {
+        this.typeId = type;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + warehouse;
-        result = prime * result + type;
+        result = prime * result + warehouseId;
+        result = prime * result + typeId;
         return result;
     }
 
@@ -55,10 +55,10 @@ public class WhsObjectKey implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         WhsObjectKey other = (WhsObjectKey) obj;
-        if (warehouse != other.warehouse)
+        if (warehouseId != other.warehouseId)
             return false;
-        if (type != other.type)
+        if (typeId != other.typeId)
             return false;
         return true;
-    }    
+    }
 }
