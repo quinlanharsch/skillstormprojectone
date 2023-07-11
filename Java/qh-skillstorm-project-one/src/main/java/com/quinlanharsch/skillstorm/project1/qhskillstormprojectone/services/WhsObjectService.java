@@ -13,6 +13,7 @@ public class WhsObjectService {
      @Autowired
     WhsObjectRepository repository;
 
+    // TODO: Warehouse UPDATE if CAPACITY CHANGES
     public WhsObject saveWhsObject(WhsObject whsObject) {
         return repository.save(whsObject);
     }

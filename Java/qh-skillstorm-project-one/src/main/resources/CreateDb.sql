@@ -226,59 +226,50 @@ VALUES (5, 5, 10, 'system', NOW());
 /*******************************************************************************
    Create Sprocs (to decouple)
 ********************************************************************************/
-CREATE PROCEDURE DelWarehouseById(WarehouseId int)
-LANGUAGE SQL
-BEGIN ATOMIC
-    IF WarehouseId != 1 THEN
-        DELETE FROM WhsObjects o where o.WhsId = WarehouseId;
-        DELETE FROM Warehouses w WHERE w.WhsId = WarehouseId;
-    END IF;
-    
-END;
+-- CREATE PROCEDURE DelWarehouseById(WarehouseId int)
+-- LANGUAGE SQL
+-- BEGIN ATOMIC
+--     IF WarehouseId != 1 THEN
+--         DELETE FROM WhsObjects o where o.WhsId = WarehouseId;
+--         DELETE FROM Warehouses w WHERE w.WhsId = WarehouseId;
+--     END IF;
+-- END;
 
-CREATE PROCEDURE DelWhsObjectById(ObjectId int)
-LANGUAGE SQL
-BEGIN ATOMIC
-    DELETE FROM WhsObjects o where o.ObjId = ObjectId;
-END;
+-- CREATE PROCEDURE DelWhsObjectById(Whsid int, Typid int)
+-- LANGUAGE SQL
+-- BEGIN ATOMIC
+--     DELETE FROM WhsObjects o where o.wHSID = Whsid AND o.TypId = Typid;
+-- END;
 
-CREATE PROCEDURE DelTypeById(TypeId int)
-LANGUAGE SQL
-BEGIN ATOMIC
-    DELETE FROM WhsObjects o where o.TypId = TypeId;
-    DELETE FROM Warehouses w WHERE w.TypId = TypeId;
-END;
+-- CREATE PROCEDURE DelTypeById(TypeId int)
+-- LANGUAGE SQL
+-- BEGIN ATOMIC
+--     DELETE FROM WhsObjects o where o.TypId = TypeId;
+--     DELETE FROM ObjTypes t WHERE t.TypId = TypeId;
+-- END;
 
-CREATE PROCEDURE AddType(WarehouseName varchar(120), WarehouseCapacity int, User varchar(120))
-LANGUAGE SQL
-BEGIN ATOMIC
-    INSERT INTO Warehouses (WhsName, WhsCapacity, UserLogged, CallTime) VALUES (WarehouseName, WarehouseCapacity, User, NOW());
-END;
+-- CREATE PROCEDURE AddType(WarehouseName varchar(120), WarehouseCapacity int, User varchar(120))
+-- LANGUAGE SQL
+-- BEGIN ATOMIC
+--     INSERT INTO Warehouses (WhsName, WhsCapacity, UserLogged, CallTime) VALUES (WarehouseName, WarehouseCapacity, User, NOW());
+-- END;
 
-CREATE PROCEDURE AddWarehouse(TypeName VARCHAR(120), TypeDescription VARCHAR(1200), TypeSize NUMERIC(12,0), User varchar(120))
-LANGUAGE SQL
-BEGIN ATOMIC
-    INSERT INTO ObjTypes (TypName, TypDesc, TypSize, UserLogged, CallTime) VALUES (TypeName, TypeDescription, TypeSize, User, NOW());    
-END;
+-- CREATE PROCEDURE AddWarehouse(TypeName VARCHAR(120), TypeDescription VARCHAR(1200), TypeSize NUMERIC(12,0), User varchar(120))
+-- LANGUAGE SQL
+-- BEGIN ATOMIC
+--     INSERT INTO ObjTypes (TypName, TypDesc, TypSize, UserLogged, CallTime) VALUES (TypeName, TypeDescription, TypeSize, User, NOW());    
+-- END;
 
-CREATE PROCEDURE AddObject(WarehouseId INT, ObjectType VARCHAR(120))
+CREATE PROCEDURE WhsCapacityLeft(WarehouseId INT)
 LANGUAGE SQL
 BEGIN ATOMIC
-    CREATE TEMP TABLE WhsCapSum AS
-    SELECT w.WhsCapacity, SUM(t.TypSize) CapSum
+    SELECT MAX(w.capacity) - SUM(t.size * o.quantity) CapSum
     -- TODO * QUANTITY
-    FROM WhsObjects o
-    JOIN Warehouses w ON w.WhsId = o.WhsId
-    JOIN ObjTypes t on t.TypId = o.TypId
-    WHERE w.WhsId = WarehouseId
-    GROUP BY w.WhsCapacity
-    LIMIT 1;
-    
-    IF WhsCapSum.WhsCapacity > WhsCapSum.CapSum THEN
-        INSERT INTO WhsObjects (WhaId, TypId, UserLogged, CallTime) VALUES (WarehouseId, ObjectType, User, NOW());
-    ELSE
-        raise notice'The object would exceed Warehouse %''s capacity', WarehouseId;
-    END IF;
+    FROM public.Warehouses w
+    JOIN public.WhsObjects o ON w.WhsId = o.WhsId
+    JOIN public.ObjTypes t on t.TypId = o.TypId
+    WHERE w.WhsId = 1 --WarehouseId
+    ;
 END;
 
 -- TODO ADD/DEL Type

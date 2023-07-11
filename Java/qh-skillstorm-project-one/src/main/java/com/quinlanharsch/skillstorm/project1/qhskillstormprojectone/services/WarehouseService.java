@@ -13,6 +13,7 @@ public class WarehouseService {
     @Autowired
     WarehouseRepository warehouseRepository;
 
+    // TODO: Warehouse UPDATE if CAPACITY CHANGES
     public Warehouse saveWarehouse(Warehouse warehouse) {
         return warehouseRepository.save(warehouse);
     }
