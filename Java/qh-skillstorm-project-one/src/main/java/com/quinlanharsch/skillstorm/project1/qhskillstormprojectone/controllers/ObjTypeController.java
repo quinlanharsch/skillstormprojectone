@@ -40,7 +40,7 @@ public class ObjTypeController {
     
     //Upadate
     @PutMapping("/type") 
-    public ResponseEntity<ObjType> updateObjType(@RequestBody ObjType objType) {
+    public ResponseEntity<ObjType> updateObjType(@Valid @RequestBody ObjType objType) {
         ObjType newObjType = objTypeService.saveObjType(objType);
         return new ResponseEntity<ObjType>(newObjType, HttpStatus.OK);
     }

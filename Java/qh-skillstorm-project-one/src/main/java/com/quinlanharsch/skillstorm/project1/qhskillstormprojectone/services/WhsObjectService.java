@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.models.WhsObject;
+import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.models.WhsObjectKey;
 import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.repositories.WhsObjectRepository;
 
 @Service
@@ -19,7 +20,8 @@ public class WhsObjectService {
     }
 
     public WhsObject findById(int whsid, int typid) {
-        Optional<WhsObject> whsObject = repository.findById(whsid, typid);
+        WhsObjectKey key = new WhsObjectKey(whsid, typid);
+        Optional<WhsObject> whsObject = repository.findById(key);
         if(whsObject.isPresent()) {
             return whsObject.get();
         }
@@ -27,9 +29,10 @@ public class WhsObjectService {
     }
 
     public WhsObject deleteById(int whsid, int typid) {
-        Optional<WhsObject> whsObject = repository.findById(whsid, typid);
+        WhsObjectKey key = new WhsObjectKey(whsid, typid);
+        Optional<WhsObject> whsObject = repository.findById(key);
         if(whsObject.isPresent()) {
-            repository.deleteById(whsid, typid);
+            repository.deleteById(key);
             return whsObject.get();
         }
         return null;

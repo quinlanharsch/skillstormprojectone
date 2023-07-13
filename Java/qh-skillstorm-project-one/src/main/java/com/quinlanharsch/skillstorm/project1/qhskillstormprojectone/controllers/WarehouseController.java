@@ -17,8 +17,6 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
 @RequestMapping("/warehouses")
@@ -43,14 +41,14 @@ public class WarehouseController {
 
     //Update
     @PutMapping("/warehouse")
-    public ResponseEntity<Warehouse> updateWarehouse(@RequestBody Warehouse warehouse) {
+    public ResponseEntity<Warehouse> updateWarehouse(@Valid @RequestBody Warehouse warehouse) {
         Warehouse newWarehouse = warehouseService.saveWarehouse(warehouse);
         return new ResponseEntity<Warehouse>(newWarehouse, HttpStatus.OK);
     }
 
     //Delete
     @DeleteMapping("/warehouse/{whsid}")
-    public ResponseEntity<Warehouse> deleteWarehouse(@RequestParam int whid) {
+    public ResponseEntity<Warehouse> deleteWarehouse(@PathVariable int whid) {
         Warehouse delWarehouse = warehouseService.deleteById(whid);
         return new ResponseEntity<Warehouse>(delWarehouse, HttpStatus.NO_CONTENT);
     }

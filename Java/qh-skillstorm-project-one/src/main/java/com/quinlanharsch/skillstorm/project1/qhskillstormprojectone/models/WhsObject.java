@@ -39,24 +39,15 @@ public class WhsObject {
     
     public WhsObject() {
     }
-
-    public WhsObject(Warehouse warehouse, ObjType type, int quantity, String note) {
+    
+    public WhsObject(WhsObjectKey id, Warehouse warehouse, ObjType objtype, int quantity, String note) {
+        this.id = id;
         this.warehouse = warehouse;
-        this.objtype = type;
+        this.objtype = objtype;
         this.quantity = quantity;
         this.note = note;
-        //this.calltime = now;
     }
-
-    public WhsObject(Warehouse warehouse, ObjType type, int quantity, String note, String userlogged, Timestamp calltime) {
-        this.warehouse = warehouse;
-        this.objtype = type;
-        this.quantity = quantity;
-        this.note = note;
-        this.userlogged = userlogged;
-        this.calltime = calltime;
-    }
-
+    
     public Warehouse getWarehouse() {
         return warehouse;
     }
@@ -92,6 +83,12 @@ public class WhsObject {
     }
     public void setCalltime(Timestamp calltime) {
         this.calltime = calltime;
+    }
+    public WhsObjectKey getId() {
+        return id;
+    }
+    public void setId(WhsObjectKey id) {
+        this.id = id;
     }
 
     @Override

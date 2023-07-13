@@ -1,6 +1,6 @@
 TODO
 - Keep building out CSMR in java
-- Front end
+- Front end lol
 
 UPKP
 - Post to GH
