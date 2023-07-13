@@ -48,8 +48,8 @@ public class WarehouseController {
 
     //Delete
     @DeleteMapping("/warehouse/{whsid}")
-    public ResponseEntity<Warehouse> deleteWarehouse(@PathVariable int whid) {
-        Warehouse delWarehouse = warehouseService.deleteById(whid);
+    public ResponseEntity<Warehouse> deleteWarehouse(@PathVariable int whsid) {
+        Warehouse delWarehouse = warehouseService.deleteById(whsid);
         return new ResponseEntity<Warehouse>(delWarehouse, HttpStatus.NO_CONTENT);
     }
 }

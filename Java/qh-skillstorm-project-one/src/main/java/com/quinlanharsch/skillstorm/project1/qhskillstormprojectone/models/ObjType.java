@@ -60,6 +60,11 @@ public class ObjType {
         this.whsobjects = whsobjects;
     }
 
+    public void setDefaultLog() {
+        this.userlogged = "admin";
+        this.calltime = new Timestamp(System.currentTimeMillis());
+    }
+
     public int getTypid() {
         return typid;
     }

@@ -92,6 +92,11 @@ public class Warehouse {
         this.calltime = new Timestamp(System.currentTimeMillis());
     }
 
+    public void setDefaultLog() {
+        this.userlogged = "admin";
+        this.calltime = new Timestamp(System.currentTimeMillis());
+    }
+
     //GETTERS SETTERS
     public int getWhsid() {
         return whsid;

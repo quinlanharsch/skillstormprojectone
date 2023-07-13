@@ -16,6 +16,7 @@ public class WhsObjectService {
 
     // TODO: Warehouse UPDATE if CAPACITY CHANGES
     public WhsObject saveWhsObject(WhsObject whsObject) {
+        whsObject.setDefaultLog();
         return repository.save(whsObject);
     }
 
@@ -32,7 +33,7 @@ public class WhsObjectService {
         WhsObjectKey key = new WhsObjectKey(whsid, typid);
         Optional<WhsObject> whsObject = repository.findById(key);
         if(whsObject.isPresent()) {
-            repository.deleteById(key);
+            repository.deleteById(whsid, typid);
             return whsObject.get();
         }
         return null;

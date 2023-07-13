@@ -19,13 +19,13 @@ public class WhsObject {
 
     @ManyToOne
     @MapsId("warehouseId")
-    @JoinColumn(name = "whsid", insertable = false, updatable = false)
+    @JoinColumn(name = "whsid", referencedColumnName = "whsid")
     private Warehouse warehouse;
     // referencedColumnName = "whsid"
 
     @ManyToOne
     @MapsId("typeId")
-    @JoinColumn(name = "typid", insertable = false, updatable = false)
+    @JoinColumn(name = "typid", referencedColumnName = "typid")
     private ObjType objtype;
     
     @Column
@@ -40,55 +40,84 @@ public class WhsObject {
     public WhsObject() {
     }
     
-    public WhsObject(WhsObjectKey id, Warehouse warehouse, ObjType objtype, int quantity, String note) {
+    public WhsObject(WhsObjectKey id, int quantity, String note, String userlogged, Timestamp calltime) {
+        this.id = id;
+        this.quantity = quantity;
+        this.note = note;
+        this.userlogged = "admin";
+        this.calltime = new Timestamp(System.currentTimeMillis());
+    }
+    
+    public WhsObject(WhsObjectKey id, Warehouse warehouse, ObjType objtype, int quantity, String note,
+            String userlogged, Timestamp calltime) {
         this.id = id;
         this.warehouse = warehouse;
         this.objtype = objtype;
         this.quantity = quantity;
         this.note = note;
-    }
-    
-    public Warehouse getWarehouse() {
-        return warehouse;
-    }
-    public void setWarehouse(Warehouse warehouse) {
-        this.warehouse = warehouse;
-    }
-    public ObjType getObjtype() {
-        return objtype;
-    }
-    public void setObjtype(ObjType type) {
-        this.objtype = type;
-    }
-    public int getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-    public String getNote() {
-        return note;
-    }
-    public void setNote(String note) {
-        this.note = note;
-    }
-    public String getUserlogged() {
-        return userlogged;
-    }
-    public void setUserlogged(String userlogged) {
         this.userlogged = userlogged;
-    }
-    public Timestamp getCalltime() {
-        return calltime;
-    }
-    public void setCalltime(Timestamp calltime) {
         this.calltime = calltime;
     }
+
+    public void setDefaultLog() {
+        this.userlogged = "admin";
+        this.calltime = new Timestamp(System.currentTimeMillis());
+    }
+
     public WhsObjectKey getId() {
         return id;
     }
+
     public void setId(WhsObjectKey id) {
         this.id = id;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    public ObjType getObjtype() {
+        return objtype;
+    }
+
+    public void setObjtype(ObjType objtype) {
+        this.objtype = objtype;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getUserlogged() {
+        return userlogged;
+    }
+
+    public void setUserlogged(String userlogged) {
+        this.userlogged = userlogged;
+    }
+
+    public Timestamp getCalltime() {
+        return calltime;
+    }
+
+    public void setCalltime(Timestamp calltime) {
+        this.calltime = calltime;
     }
 
     @Override

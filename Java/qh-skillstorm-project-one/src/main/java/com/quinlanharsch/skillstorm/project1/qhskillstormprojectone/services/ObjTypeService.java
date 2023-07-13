@@ -14,6 +14,7 @@ public class ObjTypeService {
     ObjTypeRepository objTypeRepository;
 
     public ObjType saveObjType(ObjType objtype) {
+        objtype.setDefaultLog();
         return objTypeRepository.save(objtype);
     }
 

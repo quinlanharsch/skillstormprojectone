@@ -11,38 +11,41 @@ public class WhsObjectKey implements Serializable {
     //NOTE Composite keys in the model require a seperate Serializable object to be used as the id in WhsObject 
 
     @Column(name = "whsid")
-    private int warehouseId;
+    private int whsid;
 
     @Column(name = "typid")
-    private int typeId;
+    private int typid;
 
     public WhsObjectKey() {
     }
 
     public WhsObjectKey(int warehouse, int type) {
-        this.warehouseId = warehouse;
-        this.typeId = type;
+        this.whsid = warehouse;
+        this.typid = type;
     }
 
-    public int getWarehouseId() {
-        return warehouseId;
+    public int getWhsid() {
+        return whsid;
     }
-    public void setWarehouseId(int warehouse) {
-        this.warehouseId = warehouse;
+
+    public void setWhsid(int whsid) {
+        this.whsid = whsid;
     }
-    public int getTypeId() {
-        return typeId;
+
+    public int getTypid() {
+        return typid;
     }
-    public void setTypeId(int type) {
-        this.typeId = type;
+
+    public void setTypid(int typid) {
+        this.typid = typid;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + warehouseId;
-        result = prime * result + typeId;
+        result = prime * result + whsid;
+        result = prime * result + typid;
         return result;
     }
 
@@ -55,9 +58,9 @@ public class WhsObjectKey implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         WhsObjectKey other = (WhsObjectKey) obj;
-        if (warehouseId != other.warehouseId)
+        if (whsid != other.whsid)
             return false;
-        if (typeId != other.typeId)
+        if (typid != other.typid)
             return false;
         return true;
     }

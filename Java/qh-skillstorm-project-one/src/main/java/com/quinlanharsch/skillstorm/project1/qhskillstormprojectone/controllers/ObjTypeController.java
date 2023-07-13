@@ -26,7 +26,7 @@ public class ObjTypeController {
 
     //Create
     @PostMapping("/type") 
-    public ResponseEntity<ObjType> createObjType(@Valid @RequestBody ObjType objType) {         
+    public ResponseEntity<ObjType> createObjType(@Valid @RequestBody ObjType objType) {     
         ObjType newObjType = objTypeService.saveObjType(objType);
         return new ResponseEntity<ObjType>(newObjType, HttpStatus.CREATED);
     }
@@ -40,14 +40,14 @@ public class ObjTypeController {
     
     //Upadate
     @PutMapping("/type") 
-    public ResponseEntity<ObjType> updateObjType(@Valid @RequestBody ObjType objType) {
+    public ResponseEntity<ObjType> updateObjType(@Valid @RequestBody ObjType objType) {  
         ObjType newObjType = objTypeService.saveObjType(objType);
         return new ResponseEntity<ObjType>(newObjType, HttpStatus.OK);
     }
     
     //Delete
     @DeleteMapping("/type/{typid}")
-    public ResponseEntity<ObjType> deleteObjType(@PathVariable int typid) {
+    public ResponseEntity<ObjType> deleteById(@PathVariable int typid) {
         ObjType delObjType = objTypeService.deleteById(typid);
         return new ResponseEntity<ObjType>(delObjType, HttpStatus.NO_CONTENT);
     }
