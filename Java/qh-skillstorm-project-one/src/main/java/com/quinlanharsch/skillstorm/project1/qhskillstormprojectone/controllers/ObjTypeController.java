@@ -51,5 +51,4 @@ public class ObjTypeController {
         ObjType delObjType = objTypeService.deleteById(typid);
         return new ResponseEntity<ObjType>(delObjType, HttpStatus.NO_CONTENT);
     }
-    
 }

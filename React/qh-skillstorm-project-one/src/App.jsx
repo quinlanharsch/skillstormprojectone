@@ -3,7 +3,8 @@ import {
   BrowserRouter,
   Routes,
   Route
-} from "react-router-dom";import 'bootstrap/dist/css/bootstrap.min.css'
+} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css'
 // import XXX from 'react-bootstrap/XXX
 
 import Home from './Pages/Home'
