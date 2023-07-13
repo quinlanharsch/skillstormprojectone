@@ -1,5 +1,6 @@
 package com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,10 @@ import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.repositories
 public class ObjTypeService {
     @Autowired
     ObjTypeRepository objTypeRepository;
+
+    public List<ObjType> findAllObjTypes() {
+        return objTypeRepository.findAll();
+    }
 
     public ObjType saveObjType(ObjType objtype) {
         objtype.setDefaultLog();

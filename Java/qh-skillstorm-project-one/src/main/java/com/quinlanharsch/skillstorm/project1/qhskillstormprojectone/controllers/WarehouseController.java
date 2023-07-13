@@ -1,5 +1,7 @@
 package com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +35,12 @@ public class WarehouseController {
     }
 
     //Read
+    @GetMapping
+    public ResponseEntity<List<Warehouse>> findAllWarehouses() {
+        List<Warehouse> warehouses = warehouseService.findAllWarehouses();
+        return new ResponseEntity<List<Warehouse>>(warehouses, HttpStatus.OK);
+    }
+
     @GetMapping("/warehouse/{whsid}")
     public ResponseEntity<Warehouse> findWarehouseById(@PathVariable int whsid) {
         Warehouse warehouse = warehouseService.findById(whsid);

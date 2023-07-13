@@ -1,5 +1,7 @@
 package com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,12 @@ public class ObjTypeController {
     }
     
     //Read
+    @GetMapping
+    public ResponseEntity<List<ObjType>> findAllObjTypes() {
+        List<ObjType> objTypes = objTypeService.findAllObjTypes();
+        return new ResponseEntity<List<ObjType>>(objTypes, HttpStatus.OK);
+    }
+
     @GetMapping("/type/{typid}")
     public ResponseEntity<ObjType> findObjTypeById(@PathVariable int typid) {
         ObjType objType = objTypeService.findById(typid);

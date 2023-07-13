@@ -1,6 +1,7 @@
 package com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.controllers;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,12 @@ public class WhsObjectController {
     }
 
     //Read
+    @GetMapping
+    public ResponseEntity<List<WhsObject>> findAllWhsObjects() {
+        List<WhsObject> whsObjects = whsObjectService.findAllWhsObjects();
+        return new ResponseEntity<List<WhsObject>>(whsObjects, HttpStatus.OK);
+    }
+
     @GetMapping("/object/{whsid}/{typid}")
     public ResponseEntity<WhsObject> findWhsObjectById(@PathVariable int whsid, @PathVariable int typid) {
         WhsObject whsObject = whsObjectService.findById(whsid, typid);

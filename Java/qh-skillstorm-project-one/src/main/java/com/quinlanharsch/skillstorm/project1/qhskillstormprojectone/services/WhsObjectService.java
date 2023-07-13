@@ -1,5 +1,6 @@
 package com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,10 @@ import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.repositories
 public class WhsObjectService {
      @Autowired
     WhsObjectRepository repository;
+
+    public List<WhsObject> findAllWhsObjects() {
+        return repository.findAll();
+    }
 
     // TODO: Warehouse UPDATE if CAPACITY CHANGES
     public WhsObject saveWhsObject(WhsObject whsObject) {
