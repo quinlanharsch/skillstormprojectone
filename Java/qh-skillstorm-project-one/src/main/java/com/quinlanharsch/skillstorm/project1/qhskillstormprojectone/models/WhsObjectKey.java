@@ -7,7 +7,6 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class WhsObjectKey implements Serializable {
-    
     //NOTE Composite keys in the model require a seperate Serializable object to be used as the id in WhsObject 
 
     @Column(name = "whsid")

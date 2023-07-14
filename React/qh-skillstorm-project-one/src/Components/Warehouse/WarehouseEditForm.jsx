@@ -2,7 +2,7 @@ import { Form, Button } from 'react-bootstrap'
 import { useState } from "react"
 
 function WarehouseEditForm({editWarehouse, handleNewWarehouse}) {
-    
+     
     // State for the form
     const [nameValue, setNameValue] = useState(editWarehouse.name)
     const [capacityValue, setCapacityValue] = useState(editWarehouse.capacity)
@@ -31,22 +31,6 @@ function WarehouseEditForm({editWarehouse, handleNewWarehouse}) {
     // FORM SUBMIT
     function handleSubmit(e) {
         e.preventDefault()
-        
-        // Obj to send
-        // const newWarehouse = {
-        //     name: data.get('name'),
-        //     capacity: data.get('capacity'),
-        //     climatecontrolled: data.get('climatecontrolled'),
-        //     manager: data.get('manager'),
-        //     street1: data.get('street1'),
-        //     street2: data.get('street2'),
-        //     city: data.get('city'),
-        //     state: data.get('state'),
-        //     zip: data.get('zip'),
-        //     country: data.get('country')
-        //     // userlogged: "user",
-        //     // calltime: new Date()
-        // }
 
         // Obj to send
         const newWarehouse = {
@@ -64,8 +48,6 @@ function WarehouseEditForm({editWarehouse, handleNewWarehouse}) {
             // userlogged: "user",
             // calltime: new Date()
         }
-
-        console.log(JSON.stringify(newWarehouse)) // TODO: Remove this line
 
         fetch(url + '/warehouse', {
             method: 'PUT', // PURRRR

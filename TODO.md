@@ -1,5 +1,6 @@
 TODO
 - Front end lol
+- Clear TODOS
 
 EDGE
 - Updating Capacity

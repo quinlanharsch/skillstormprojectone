@@ -18,7 +18,6 @@ public class WarehouseService {
         return warehouseRepository.findAll();
     }
 
-    // TODO: Warehouse UPDATE if CAPACITY CHANGES
     public Warehouse saveWarehouse(Warehouse warehouse) {
         warehouse.setDefaultLog();
         return warehouseRepository.save(warehouse);

@@ -31,22 +31,6 @@ function WarehouseForm({handleNewWarehouse}) {
     // FORM SUBMIT
     function handleSubmit(e) {
         e.preventDefault()
-        
-        // Obj to send
-        // const newWarehouse = {
-        //     name: data.get('name'),
-        //     capacity: data.get('capacity'),
-        //     climatecontrolled: data.get('climatecontrolled'),
-        //     manager: data.get('manager'),
-        //     street1: data.get('street1'),
-        //     street2: data.get('street2'),
-        //     city: data.get('city'),
-        //     state: data.get('state'),
-        //     zip: data.get('zip'),
-        //     country: data.get('country')
-        //     // userlogged: "user",
-        //     // calltime: new Date()
-        // }
 
         // Obj to send
         const newWarehouse = {
@@ -94,39 +78,6 @@ function WarehouseForm({handleNewWarehouse}) {
     return (
     <>
         <Form onSubmit={handleSubmit}>
-            {/* <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Name" className='name' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="number" placeholder="Capacity" className='capacity' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Climate Controlled" className='climatecontrolled' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Manager" className='manager' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Street 1" className='street1' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Street 2" className='street2' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="City" className='city' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                
-                <Form.Control type="text" placeholder="State" className='state' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                
-                <Form.Control type="text" placeholder="Zip" className='zip' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                
-                <Form.Control type="text" placeholder="Country" className='country' />
-            </Form.Group> */}
             <Form.Control className="mb-3" type="text" onChange={nameInput} placeholder="Name" value={nameValue} />
             <Form.Control className="mb-3" type="number" onChange={capacityInput} placeholder="Capacity" value={capacityValue} />    
             <Form.Control className="mb-3" type="text" onChange={climatecontrolledInput} placeholder="Climate Controlled" value={climatecontrolledValue} />

@@ -19,7 +19,6 @@ public class WhsObjectService {
         return repository.findAll();
     }
 
-    // TODO: Warehouse UPDATE if CAPACITY CHANGES
     public WhsObject saveWhsObject(WhsObject whsObject) {
         whsObject.setDefaultLog();
         return repository.save(whsObject);

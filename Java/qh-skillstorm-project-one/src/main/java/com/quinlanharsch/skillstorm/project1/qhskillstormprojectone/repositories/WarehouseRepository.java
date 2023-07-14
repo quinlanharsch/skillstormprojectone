@@ -22,10 +22,13 @@ public interface WarehouseRepository extends JpaRepository<Warehouse, Integer>{
                    "DELETE FROM public.Warehouses w WHERE w.WhsId = ?1 ;", nativeQuery = true)
     void deleteById(int whsid);
 
-    @Query(value = "SELECT MAX(w.capacity) - SUM(t.size * o.quantity) CapSum\r\n" + //
+    // GET WAREHOUSE CAPACITY
+    @Query(value = "SELECT SUM(t.size * o.quantity) CapSum\r\n" + //
             "FROM public.Warehouses w\r\n" + //
             "JOIN public.WhsObjects o ON w.WhsId = o.WhsId\r\n" + //
             "JOIN public.ObjTypes t on t.TypId = o.TypId\r\n" + //
             "WHERE w.WhsId = ?1 ;", nativeQuery = true)
-    BigDecimal remainingCapacityByWhsId(int whsid);
+    BigDecimal capacityByWhsId(int whsid);
+
+
 }
