@@ -28,13 +28,13 @@ function Warehouses() {
     .catch((error) => {
       console.error('Error:', error);
     });
-  }, [])
+  }, []) 
 
 
-  function handleNewWarehouse(warehouse) {
-    window.location.reload(false); //TODO test false?
-    // setWarehouses((warehouses) => {[...warehouses, warehouse]})
-  }
+  // function handleNewWarehouse(warehouse) {
+  //   window.location.reload(false); //TODO test false?
+  //   // setWarehouses((warehouses) => {[...warehouses, warehouse]})
+  // }
 
   return (
     <>
@@ -51,7 +51,7 @@ function Warehouses() {
           <Modal.Title>Add Warehouse</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <WarehousesForm handleNewWarehouse={handleNewWarehouse} />
+          <WarehousesForm />
         </Modal.Body>
       </Modal>
     </>

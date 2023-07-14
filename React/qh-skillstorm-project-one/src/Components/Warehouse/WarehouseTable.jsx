@@ -5,7 +5,6 @@ import ButtonGroup from "react-bootstrap/ButtonGroup"
 import { Modal } from 'react-bootstrap';
 import { useState } from "react"
 import WarehouseEditForm from "./WarehouseEditForm";
-import handleNewWarehouse from "./WarehouseForm";
 
 export default function WarehousesTable({tableData}) {
   // Delete Button
@@ -75,8 +74,8 @@ export default function WarehousesTable({tableData}) {
         <Modal.Header closeButton>
           <Modal.Title>Edit Warehouse</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <WarehouseEditForm editWarehouse={editWarehouse} handleNewWarehouse={handleNewWarehouse} />
+        <Modal.Body> 
+          <WarehouseEditForm editWarehouse={editWarehouse} />
         </Modal.Body>
       </Modal>
     </>

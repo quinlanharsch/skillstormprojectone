@@ -1,7 +1,7 @@
 import { Form, Button } from 'react-bootstrap'
 import { useState } from "react"
 
-function WarehouseEditForm({editWarehouse, handleNewWarehouse}) {
+function WarehouseEditForm({editWarehouse}) {
      
     // State for the form
     const [nameValue, setNameValue] = useState(editWarehouse.name)
@@ -56,7 +56,7 @@ function WarehouseEditForm({editWarehouse, handleNewWarehouse}) {
         })
         .then(response => response.json())
         .then(data => {
-            handleNewWarehouse(data)
+            window.location.reload(false)
             console.log('Success:', data);
             setNameValue('')
             setCapacityValue('')
@@ -72,7 +72,7 @@ function WarehouseEditForm({editWarehouse, handleNewWarehouse}) {
         .catch((error) => {
             console.error('Error:', error);
         });
-    }
+    } 
     
     return (
     <>

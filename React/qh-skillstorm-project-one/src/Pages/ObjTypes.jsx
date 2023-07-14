@@ -29,11 +29,6 @@ function ObjTypes() {
     });
   }, [])
 
-  function handleNewObjtype(objtype) {
-    window.location.reload(false); //TODO test false?
-    // setObjtypes((objtypes) => {[...objtypes, objtype]})
-  }
-
   return (
     <>
       <h1>Object Types</h1>
@@ -49,7 +44,7 @@ function ObjTypes() {
           <Modal.Title>Add Object Type</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ObjTypesForm handleNewObjtype ={handleNewObjtype} />
+          <ObjTypesForm />
         </Modal.Body>
       </Modal>
     </>
