@@ -1,19 +1,19 @@
 import { Form, Button } from 'react-bootstrap'
 import { useState } from "react"
 
-function WarehouseForm({handleNewWarehouse}) {
+function WarehouseEditForm({editWarehouse, handleNewWarehouse}) {
     
     // State for the form
-    const [nameValue, setNameValue] = useState('')
-    const [capacityValue, setCapacityValue] = useState('')
-    const [climatecontrolledValue, setClimatecontrolledValue] = useState('')
-    const [managerValue, setManagerValue] = useState('')
-    const [street1Value, setStreet1Value] = useState('')
-    const [street2Value, setStreet2Value] = useState('')
-    const [cityValue, setCityValue] = useState('')
-    const [stateValue, setStateValue] = useState('')
-    const [zipValue, setZipValue] = useState('')
-    const [countryValue, setCountryValue] = useState('')
+    const [nameValue, setNameValue] = useState(editWarehouse.name)
+    const [capacityValue, setCapacityValue] = useState(editWarehouse.capacity)
+    const [climatecontrolledValue, setClimatecontrolledValue] = useState(editWarehouse.climatecontrolled)
+    const [managerValue, setManagerValue] = useState(editWarehouse.manager)
+    const [street1Value, setStreet1Value] = useState(editWarehouse.street1)
+    const [street2Value, setStreet2Value] = useState(editWarehouse.street2)
+    const [cityValue, setCityValue] = useState(editWarehouse.city)
+    const [stateValue, setStateValue] = useState(editWarehouse.state)
+    const [zipValue, setZipValue] = useState(editWarehouse.zip)
+    const [countryValue, setCountryValue] = useState(editWarehouse.country)
 
     const nameInput = ({target:{value}}) => setNameValue(value)
     const capacityInput = ({target:{value}}) => setCapacityValue(value)
@@ -50,6 +50,7 @@ function WarehouseForm({handleNewWarehouse}) {
 
         // Obj to send
         const newWarehouse = {
+            whsid: editWarehouse.whsid,
             name: nameValue,
             capacity: capacityValue,
             climatecontrolled: climatecontrolledValue,
@@ -66,8 +67,8 @@ function WarehouseForm({handleNewWarehouse}) {
 
         console.log(JSON.stringify(newWarehouse)) // TODO: Remove this line
 
-        fetch(url + '/warehouse', { 
-            method: 'POST',
+        fetch(url + '/warehouse', {
+            method: 'PUT', // PURRRR
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newWarehouse)
         })
@@ -94,39 +95,6 @@ function WarehouseForm({handleNewWarehouse}) {
     return (
     <>
         <Form onSubmit={handleSubmit}>
-            {/* <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Name" className='name' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="number" placeholder="Capacity" className='capacity' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Climate Controlled" className='climatecontrolled' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Manager" className='manager' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Street 1" className='street1' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Street 2" className='street2' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="City" className='city' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                
-                <Form.Control type="text" placeholder="State" className='state' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                
-                <Form.Control type="text" placeholder="Zip" className='zip' />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                
-                <Form.Control type="text" placeholder="Country" className='country' />
-            </Form.Group> */}
             <Form.Control className="mb-3" type="text" onChange={nameInput} placeholder="Name" value={nameValue} />
             <Form.Control className="mb-3" type="number" onChange={capacityInput} placeholder="Capacity" value={capacityValue} />    
             <Form.Control className="mb-3" type="text" onChange={climatecontrolledInput} placeholder="Climate Controlled" value={climatecontrolledValue} />
@@ -145,4 +113,4 @@ function WarehouseForm({handleNewWarehouse}) {
     )
 }
 
-export default WarehouseForm
+export default WarehouseEditForm

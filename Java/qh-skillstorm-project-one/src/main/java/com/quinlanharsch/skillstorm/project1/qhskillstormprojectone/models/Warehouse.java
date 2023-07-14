@@ -122,12 +122,15 @@ public class Warehouse {
     public void setClimatecontrolled(boolean climatecontrolled) {
         this.climatecontrolled = climatecontrolled;
     }
-    public String isManager() {
+    
+    public String getManager() {
         return manager;
     }
+
     public void setManager(String manager) {
         this.manager = manager;
     }
+
     public String getStreet1() {
         return street1;
     }

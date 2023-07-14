@@ -17,14 +17,16 @@ function App() {
     <>
       <MyNavbar />
       <br />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/warehouses" element={<Warehouses />} />
-          <Route path="/whsobjects" element={<WhsObjects />} />
-          <Route path="/objtypes" element={<ObjTypes />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="container">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/warehouses" element={<Warehouses />} />
+            <Route path="/whsobjects" element={<WhsObjects />} />
+            <Route path="/objtypes" element={<ObjTypes />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </>
   )
 }

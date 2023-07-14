@@ -1,16 +1,18 @@
 TODO
-- Keep building out CSMR in java
 - Front end lol
 
 EDGE
 - Updating Capacity
 - Adding items Capacity
 - Other shit
+    - Validation
+    - Edge cases
 
 UPKP
 - Post to GH
 
 DONE
+- Java/DB CSMR mostly :)
 - Init commit
 - Model
 

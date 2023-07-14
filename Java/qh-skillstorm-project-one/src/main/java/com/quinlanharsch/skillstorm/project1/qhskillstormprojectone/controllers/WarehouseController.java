@@ -16,12 +16,14 @@ import com.quinlanharsch.skillstorm.project1.qhskillstormprojectone.services.War
 
 import jakarta.validation.Valid;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/warehouses")
+@CrossOrigin(origins = "*")
 public class WarehouseController {
     
     @Autowired
