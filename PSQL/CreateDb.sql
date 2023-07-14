@@ -1,5 +1,4 @@
 /*******************************************************************************
-   Chinook Database - Version 1.0
    Script: CreateDb.sql
    Description: Creates and populates the FreeHouse database.
    DB Server: PostgreSql
